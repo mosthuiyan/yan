@@ -17,15 +17,14 @@ int main(int argc, char **argv){
   std::string dataset_root, sequence;
   pnh.getParam("dataset_root", dataset_root);
   pnh.getParam("sequence", sequence);
+
+  yan::Kitti360StereoImagePub kitti360_img_pub(nh, pnh);
   while(ros::ok){ // getline(timestamp_file, line) && 
-    
     
     std_msgs::Header header;
     header.stamp = ros::Time::now();
     header.frame_id = "/kitti360_image";
     
-    
-    yan::Kitti360StereoImagePub kitti360_img_pub(nh, pnh, frame_idx);
     if(!kitti360_img_pub.image_publish(header, frame_idx)){
       ROS_INFO("system error : image publish fail.");
     }
