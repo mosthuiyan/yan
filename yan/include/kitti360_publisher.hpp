@@ -170,7 +170,7 @@ namespace yan{
       bin_path_ss << dataset_root_ << "data_3d_raw/" << sequence_ << "velodyne_points/data/" 
                << std::setfill('0') << std::setw(10) << frame_index << ".bin";
       std::string tempp = bin_path_ss.str();
-      std::vector<float> lidar_data_buffer = read_lidar_data<float>(bin_path_ss.str());
+      std::vector<float> lidar_data_buffer = yan::read_lidar_data<float>(bin_path_ss.str());
       const size_t num_elements = lidar_data_buffer.size();
       // build open3d::geometry::PointCloud by lidar_data_buffer 
       open3d::geometry::PointCloud laser_cloud;
